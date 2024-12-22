@@ -1,0 +1,16 @@
+server:
+  port: 8080
+#PostgreSql
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/file_storage
+    username: postgres
+    password: 123546
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        default_schema: public
