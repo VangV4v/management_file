@@ -1,5 +1,7 @@
 package com.vang.common;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -17,5 +19,17 @@ public class VangUtils {
      */
     public static Date getSystemDateTime() {
         return new Date();
+    }
+
+    /**
+     * Get current date time of system by your format
+     * @param {{@link Date}}
+     * @param {{@link String}}
+     * @return {{@link String}}
+     */
+    public static String getStringDateByFormat(Date date, String format) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return LocalDateTime.now().format(formatter);
     }
 }

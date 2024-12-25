@@ -41,7 +41,7 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public boolean validateToken(String token, UserDetails userDetails) {
 
-        return userDetails.getUsername().equals(this.extractUsername(token)) && extractToken(token, Claims::getExpiration).before(new Date());
+        return userDetails.getUsername().equals(this.extractUsername(token)) && new Date().before(extractToken(token, Claims::getExpiration));
     }
 
     @Override
