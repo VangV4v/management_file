@@ -1,14 +1,17 @@
 package com.vang.main.service.impl;
 
 import com.vang.common.BaseConstant;
+import com.vang.common.BaseRes;
 import com.vang.common.BaseService;
 import com.vang.common.VangUtils;
+import com.vang.common.service.ProfileUserService;
 import com.vang.main.bean.MinIOBean;
+import com.vang.main.entities.FileData;
+import com.vang.main.repository.FileDataRepository;
 import com.vang.main.service.ManagementFileService;
 import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.PutObjectArgs;
-import io.minio.UploadObjectArgs;
 import io.minio.errors.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +24,7 @@ import java.io.InputStream;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * CreatedDate: 25/12/2024
@@ -38,8 +42,14 @@ public class ManagementFileServiceImpl extends BaseService implements Management
 
     private final MinIOBean minIOBean;
 
-    public ManagementFileServiceImpl(MinIOBean minIOBean) {
+    private final ProfileUserService profileUserService;
+
+    private final FileDataRepository fileDataRepository;
+
+    public ManagementFileServiceImpl(MinIOBean minIOBean, ProfileUserService profileUserService, FileDataRepository fileDataRepository) {
         this.minIOBean = minIOBean;
+        this.profileUserService = profileUserService;
+        this.fileDataRepository = fileDataRepository;
     }
 
     @Override
@@ -47,10 +57,13 @@ public class ManagementFileServiceImpl extends BaseService implements Management
     public String upload(MultipartFile file) throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
 
         String result = null;
+        FileData fileDataEntities = null;
         InputStream inputStream = null;
         PutObjectArgs uploadMinIOParam = null;
         String fileName = VangUtils.getStringDateByFormat(new Date(), "yyyyMMddHHmmssSSS");
         String responseUrl = null;
+        Long accountId = profileUserService.getAccountId();
+        String fileType = file.getContentType();
         //Get current folder by format Year Month(YYYYMM)
         String currentFolderByMonth = VangUtils.getStringDateByFormat(new Date(), BaseConstant.DateTimeConstant.YYYYMM);
         //Check if the folder above is not exist then create that
@@ -71,6 +84,15 @@ public class ManagementFileServiceImpl extends BaseService implements Management
                     .contentType(file.getContentType())
                     .stream(inputStream, file.getSize(), 10485760)
                     .build();
+            //create data to save
+            fileDataEntities = new FileData();
+            fileDataEntities.setAccountId(accountId);
+            fileDataEntities.setFileName(file.getOriginalFilename());
+            fileDataEntities.setFilePath(responseUrl);
+            fileDataEntities.setFileType(file.getContentType());
+            fileDataEntities.setCreatedDate(VangUtils.getSystemDateTime());
+            //save data
+            fileDataRepository.save(fileDataEntities);
             minIOBean.minioClient().putObject(uploadMinIOParam);
         } catch (Exception e) {
 
@@ -82,5 +104,15 @@ public class ManagementFileServiceImpl extends BaseService implements Management
             }
         }
         return responseUrl;
+    }
+
+    @Override
+    public BaseRes search() {
+
+        BaseRes baseRes = new BaseRes();
+        List<FileData> dataList = fileDataRepository.findAll();
+        baseRes.setSize(dataList.size());
+        baseRes.setData(dataList);
+        return baseRes;
     }
 }

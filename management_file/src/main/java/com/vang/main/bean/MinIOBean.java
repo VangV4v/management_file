@@ -4,6 +4,13 @@ import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * CreatedDate: 26/12/2024
+ * UpdatedDate:
+ * Version: 1.0
+ * Author: Quang
+ * Name: MinIOBean
+ */
 @Component
 public class MinIOBean {
 

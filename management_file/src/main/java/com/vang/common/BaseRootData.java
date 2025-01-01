@@ -1,8 +1,8 @@
 package com.vang.common;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -16,10 +16,10 @@ import java.util.Date;
  */
 @Getter
 @Setter
-@NoArgsConstructor
+@MappedSuperclass
 public class BaseRootData {
 
-    @Column(name = "created_date")
+    @Column(name = "CREATED_DATE")
     private Date createdDate;
 
     @Column(name = "updated_date")
@@ -27,5 +27,4 @@ public class BaseRootData {
 
     @Column(name = "deleted_date")
     private Date deletedDate;
-
 }

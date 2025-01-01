@@ -1,5 +1,6 @@
 package com.vang.main.service;
 
+import com.vang.common.BaseRes;
 import io.minio.errors.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,4 +23,6 @@ public interface ManagementFileService {
      * @return {{@link String}}
      */
     public String upload(MultipartFile file) throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException;
+
+    public BaseRes search();
 }

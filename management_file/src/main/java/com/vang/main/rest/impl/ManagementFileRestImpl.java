@@ -1,14 +1,19 @@
 package com.vang.main.rest.impl;
 
 import com.vang.common.BaseConstant;
+import com.vang.common.BaseRest;
+import com.vang.main.req.FileManagementSearchReq;
 import com.vang.main.rest.ManagementFileRest;
 import com.vang.main.service.ManagementFileService;
 import io.minio.errors.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,5 +45,13 @@ public class ManagementFileRestImpl implements ManagementFileRest {
     @Override
     public ResponseEntity<Object> upload(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
         return new ResponseEntity<>(managementFileService.upload(file), HttpStatus.OK);
+    }
+
+    @GetMapping(BaseConstant.URI_LIST)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Override
+    public ResponseEntity<Object> search(MultiValueMap<String, Object> params, Pageable pageable, HttpServletRequest request, HttpServletResponse response) {
+
+        return new ResponseEntity<>(managementFileService.search(), HttpStatus.OK);
     }
 }

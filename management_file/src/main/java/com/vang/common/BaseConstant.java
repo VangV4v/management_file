@@ -12,6 +12,7 @@ public class BaseConstant {
     public static final String API_V1 = "/api/v1";
     public static final String URI_LOGIN = "/login";
     public static final String URI_UPLOAD = "/upload";
+    public static final String URI_LIST = "/list";
 
     public static class DateTimeConstant {
 

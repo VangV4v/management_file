@@ -23,9 +23,9 @@ public class AuthInfo extends BaseRootData {
     public static final String TABLE_NAME = "AUTH_INFO";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-    @SequenceGenerator(name = "seq", sequenceName = "SEQ_" + TABLE_NAME, allocationSize = 1)
-    @Column(name = "ID", columnDefinition = "NUMERIC(20, 0)")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_auth_info")
+    @SequenceGenerator(name = "seq_auth_info", sequenceName = "SEQ_" + TABLE_NAME, allocationSize = 1)
+    @Column(name = "ID")
     private Long accountId;
 
     @Column(name = "USERNAME")
