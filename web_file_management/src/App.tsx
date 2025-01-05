@@ -1,10 +1,10 @@
 import './assets/css/main.scss'
-import LoginPage from './page/auth/login-page'
+import { MainLayout } from './page/layout/layout'
 
 function App() {
   return (
     <>
-      <LoginPage></LoginPage>
+      <MainLayout></MainLayout>
     </>
   )
 }
