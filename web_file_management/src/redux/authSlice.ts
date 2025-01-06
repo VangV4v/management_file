@@ -11,12 +11,8 @@ export const authUser = createAsyncThunk(
     },
 );
 
-interface UserState {
-    user: any
-}
-
 const initialState = {
-    user: {}
+    user: localStorage.getItem('jwt') || ''
 };
 
 const userSlice = createSlice({

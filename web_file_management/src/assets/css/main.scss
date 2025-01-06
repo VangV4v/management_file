@@ -4,32 +4,68 @@
 
         background-image: linear-gradient(#3750EB, #BDCFF5);
         height: 100vh;
-        margin:0; 
+        margin: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
     }
+
     &-box1 {
         background-color: #FFFFFF;
         border-radius: 20px;
         width: 70%;
         height: 70%;
     }
+
     &-gr1 {
         padding: 8%;
+
+        &-progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 5px;
+        }
     }
 }
 
 .img {
     &-bgr {
         width: 100%;
-        height: 100%;
+        height: auto;
     }
 }
 
-html, body { 
-    margin:0; 
-    padding:0; 
-    height:100%; 
-  }
+.con {
+    &-pt {
+        &-1 {
+            padding-top: 2%;
+        }
+    }
+}
+
+.img {
+    float: left;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+@media all and (min-width:321px) and (max-width: 480px) {
+    /* put your css styles in here */
+    .img {
+        padding-bottom: 10px;
+        float: left;
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}

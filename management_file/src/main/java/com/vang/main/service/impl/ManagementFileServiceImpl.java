@@ -76,7 +76,7 @@ public class ManagementFileServiceImpl extends BaseService implements Management
         try {
 
             fileName += file.getOriginalFilename().replace(" ", "_");
-            responseUrl = ENDPOINT + "/" + fileName;
+            responseUrl = ENDPOINT + "/" + currentFolderByMonth + "/" + fileName;
             inputStream = file.getInputStream();
             uploadMinIOParam = PutObjectArgs.builder()
                     .bucket(currentFolderByMonth)

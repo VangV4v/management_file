@@ -1,0 +1,21 @@
+{
+    "content": {
+        "functional": "Functional",
+        "class": "Class",
+        "text": "This is text"
+    },
+    "login": {
+        "login": "LOGIN"
+    },
+    "field": {
+        "username": "User name",
+        "password": "Pass word"
+    },
+    "err": {
+        "field": {
+            "username": "Username is not empty",
+            "password": "Password is not empty"
+        },
+        "loginfail" : "Incorrect username or password !"
+    }
+}

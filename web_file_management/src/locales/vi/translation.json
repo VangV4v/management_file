@@ -1,0 +1,21 @@
+{
+    "content": {
+        "functional": "Hàm",
+        "class": "Lớp",
+        "text": "Đây là văn bản"
+    },
+    "login": {
+        "login": "Đăng Nhập"
+    },
+    "field": {
+        "username": "Tài khoản",
+        "password": "Mật khẩu"
+    },
+    "err": {
+        "field": {
+            "username": "Tài khoản không được để trống",
+            "password": "Mật khẩu không được để trống"
+        },
+        "loginfail" : "Sai tên đăng nhập hoặc mật khẩu !"
+    }
+}
