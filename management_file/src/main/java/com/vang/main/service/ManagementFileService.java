@@ -24,5 +24,5 @@ public interface ManagementFileService {
      */
     public String upload(MultipartFile file) throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException;
 
-    public BaseRes search();
+    public BaseRes search(String name);
 }

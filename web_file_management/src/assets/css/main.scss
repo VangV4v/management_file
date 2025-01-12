@@ -52,6 +52,25 @@
     object-fit: cover;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 @media all and (min-width:321px) and (max-width: 480px) {
     /* put your css styles in here */
     .img {
@@ -61,11 +80,10 @@
         height: 250px;
         object-fit: cover;
     }
-}
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    .right {
+        display: flex;
+        justify-content: left;
+        align-items: flex-start;
+    }
 }

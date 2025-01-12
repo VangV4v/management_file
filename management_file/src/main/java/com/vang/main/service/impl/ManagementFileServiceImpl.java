@@ -107,10 +107,10 @@ public class ManagementFileServiceImpl extends BaseService implements Management
     }
 
     @Override
-    public BaseRes search() {
+    public BaseRes search(String name) {
 
         BaseRes baseRes = new BaseRes();
-        List<FileData> dataList = fileDataRepository.findAll();
+        List<FileData> dataList = fileDataRepository.searchOnlyByName(BaseConstant.CHAR_PRECENT + name + BaseConstant.CHAR_PRECENT);
         baseRes.setSize(dataList.size());
         baseRes.setData(dataList);
         return baseRes;

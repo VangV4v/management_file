@@ -1,8 +1,6 @@
 package com.vang.main.rest.impl;
 
 import com.vang.common.BaseConstant;
-import com.vang.common.BaseRest;
-import com.vang.main.req.FileManagementSearchReq;
 import com.vang.main.rest.ManagementFileRest;
 import com.vang.main.service.ManagementFileService;
 import io.minio.errors.*;
@@ -13,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -52,6 +47,7 @@ public class ManagementFileRestImpl implements ManagementFileRest {
     @Override
     public ResponseEntity<Object> search(MultiValueMap<String, Object> params, Pageable pageable, HttpServletRequest request, HttpServletResponse response) {
 
-        return new ResponseEntity<>(managementFileService.search(), HttpStatus.OK);
+        String name = params.getFirst(BaseConstant.PRO_NAME).toString();
+        return new ResponseEntity<>(managementFileService.search(name), HttpStatus.OK);
     }
 }

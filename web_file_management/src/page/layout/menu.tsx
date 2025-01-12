@@ -13,8 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Routes, Route } from "react-router";
 import FolderIcon from '@mui/icons-material/Folder';
-import { Test1Page } from '../test/test1';
 import { FilePage } from '../file/file';
+import { ChangeLanguage } from '../../components/language/change-lang';
+import { Stack } from '@mui/material';
+import settingImg from '../../assets/image/setting.png';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -126,11 +128,14 @@ function ResponsiveAppBar() {
                             </Button>
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                                </IconButton>
-                            </Tooltip>
+                            <Stack direction="row">
+                                <ChangeLanguage></ChangeLanguage>
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt="Remy Sharp" src={settingImg} />
+                                    </IconButton>
+                                </Tooltip>
+                            </Stack>
                             <Menu
                                 sx={{ mt: '45px' }}
                                 id="menu-appbar"
@@ -157,7 +162,7 @@ function ResponsiveAppBar() {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <Box>
+            <Box sx={{paddingBottom: 5}}>
                 <Routes>
                     <Route path='/file' element={<FilePage />} />
                 </Routes>

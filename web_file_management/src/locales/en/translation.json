@@ -1,8 +1,9 @@
 {
     "content": {
-        "functional": "Functional",
-        "class": "Class",
-        "text": "This is text"
+        "upload": "Upload",
+        "save": "Save",
+        "cancel": "Cancel",
+        "choose_file": "Choose file"
     },
     "login": {
         "login": "LOGIN"
@@ -16,6 +17,7 @@
             "username": "Username is not empty",
             "password": "Password is not empty"
         },
-        "loginfail" : "Incorrect username or password !"
+        "loginfail" : "Incorrect username or password !",
+        "upload_file": "Please choose an File or Image for upload"
     }
 }

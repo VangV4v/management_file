@@ -1,8 +1,9 @@
 {
     "content": {
-        "functional": "Hàm",
-        "class": "Lớp",
-        "text": "Đây là văn bản"
+        "upload": "Tải lên",
+        "save": "Lưu",
+        "cancel": "Hủy bỏ",
+        "choose_file": "Chọn tệp"
     },
     "login": {
         "login": "Đăng Nhập"
@@ -16,6 +17,7 @@
             "username": "Tài khoản không được để trống",
             "password": "Mật khẩu không được để trống"
         },
-        "loginfail" : "Sai tên đăng nhập hoặc mật khẩu !"
+        "loginfail" : "Sai tên đăng nhập hoặc mật khẩu !",
+        "upload_file": "Chọn ít nhất một ảnh hoặc tệp để tải lên"
     }
 }
