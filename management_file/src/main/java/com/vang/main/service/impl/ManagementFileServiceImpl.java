@@ -35,6 +35,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ManagementFileServiceImpl extends BaseService implements ManagementFileService {
 
     @Value("${com.vang.common.minio.endpoint}")
@@ -114,5 +115,12 @@ public class ManagementFileServiceImpl extends BaseService implements Management
         baseRes.setSize(dataList.size());
         baseRes.setData(dataList);
         return baseRes;
+    }
+
+    @Override
+    public boolean delete(Long fileId) {
+
+        int delete = fileDataRepository.deleteFileByFileId(fileId, VangUtils.getSystemDateTime());
+        return delete > 0;
     }
 }

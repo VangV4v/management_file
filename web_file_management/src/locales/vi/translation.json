@@ -3,7 +3,11 @@
         "upload": "Tải lên",
         "save": "Lưu",
         "cancel": "Hủy bỏ",
-        "choose_file": "Chọn tệp"
+        "choose_file": "Chọn tệp",
+        "remove_file": "Xác nhận xóa",
+        "remove_file_confirm": "Bạn chắc chắn với điều này chứ.",
+        "yes": "Có",
+        "no": "Không"
     },
     "login": {
         "login": "Đăng Nhập"

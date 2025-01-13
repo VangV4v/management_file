@@ -3,7 +3,11 @@
         "upload": "Upload",
         "save": "Save",
         "cancel": "Cancel",
-        "choose_file": "Choose file"
+        "choose_file": "Choose file",
+        "remove_file": "Confirm to delete",
+        "remove_file_confirm": "Are you sure to do this.",
+        "yes": "Yes",
+        "no": "No"
     },
     "login": {
         "login": "LOGIN"

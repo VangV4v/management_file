@@ -15,3 +15,12 @@ export const uploadFile = (config: any, payload: any) => {
         headers: config
     })
 };
+
+export const deleteFile = (token: any, fileId: number) => {
+
+    return AxiosInstance.delete(`/api/v1/delete/${fileId}`, {
+        headers: {
+            Authorization: token
+        }
+    });
+};

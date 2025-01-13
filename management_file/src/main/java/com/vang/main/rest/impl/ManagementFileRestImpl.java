@@ -50,4 +50,12 @@ public class ManagementFileRestImpl implements ManagementFileRest {
         String name = params.getFirst(BaseConstant.PRO_NAME).toString();
         return new ResponseEntity<>(managementFileService.search(name), HttpStatus.OK);
     }
+
+    @Override
+    @DeleteMapping(BaseConstant.URI_DELETE + BaseConstant.PARAM_FILE_ID)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<Object> deleteImage(@PathVariable("fileId") Long fileId, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+
+        return new ResponseEntity<>(managementFileService.delete(fileId), HttpStatus.OK);
+    }
 }

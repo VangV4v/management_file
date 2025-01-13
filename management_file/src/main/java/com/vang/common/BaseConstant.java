@@ -13,6 +13,8 @@ public class BaseConstant {
     public static final String URI_LOGIN = "/login";
     public static final String URI_UPLOAD = "/upload";
     public static final String URI_LIST = "/list";
+    public static final String URI_DELETE = "/delete";
+    public static final String PARAM_FILE_ID = "/{fileId}";
     public static final String PRO_NAME = "name";
     public static final String CHAR_PRECENT = "%";
 

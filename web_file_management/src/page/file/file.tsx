@@ -2,11 +2,14 @@ import { Box, Container, Grid2, IconButton, Input, Stack, TextField } from "@mui
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppSelector } from "../../redux/hooks";
 import { useEffect, useRef, useState } from "react";
-import { getFiles } from "../../api/FileService";
+import { deleteFile, getFiles } from "../../api/FileService";
 import { useTranslation } from "react-i18next";
 import { BackDropPage } from "../../components/backdrop/back-drop";
 import UploadFormDialog from "../upload/upload-file";
 import SearchIcon from '@mui/icons-material/Search';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { t } from "i18next";
 
 export interface IFilePageProps {
 }
@@ -46,6 +49,33 @@ export function FilePage(props: IFilePageProps) {
             setFileData({ datas: res.data.data });
         }
     };
+
+    const handleDeleteFile = (fileId: number) => {
+    
+        confirmAlert({
+            title: t('content.remove_file'),
+            message: t('content.remove_file_confirm'),
+            buttons: [
+              {
+                label: t('content.yes'),
+                onClick: () => {
+                    
+                    deleteFile(jwt, fileId)
+                        .then(res => {
+
+                            if(res.status === 200) {
+                                window.location.replace('/file');
+                            }
+                        })
+                        .catch(err => console.log(err));
+                }
+              },
+              {
+                label: t('content.no'),
+              }
+            ]
+          });
+    };
     useEffect(() => {
         delayLoad();
         fetchFileApi();
@@ -81,7 +111,7 @@ export function FilePage(props: IFilePageProps) {
                                         <TextField value={item.fileName} size="small"
                                             slotProps={{
                                                 input: {
-                                                    endAdornment: <IconButton><DeleteIcon /></IconButton>
+                                                    endAdornment: <IconButton onClick={() => handleDeleteFile(item.fileId)}><DeleteIcon /></IconButton>
                                                 }
                                             }}
                                         />
